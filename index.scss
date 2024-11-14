@@ -1,0 +1,914 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Spartan:wght@300;400;500&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Spartan", sans-serif;
+  // font-family: 'Montserrat', sans-serif;
+}
+html {
+  font-size: 85%;
+}
+
+body {
+  position: relative;
+}
+:root {
+  --primaryColor: #00b7b3;
+  --HoverColor: #049e9c;
+  --sectionBg: #049e9c10;
+  --blackColor: #111111;
+  --greyColor: #666666;
+  --whiteColor: #f5f5f5;
+  --borderColor: rgba(0, 183, 180, 0.137);
+  // 031642
+}
+.blueColor {
+  --primaryColor: #031642;
+  --HoverColor: #0b245f;
+  --sectionBg: #042d9e10;
+  --blackColor: #111111;
+  --greyColor: #666666;
+  --whiteColor: #f5f5f5;
+  --borderColor: rgba(12, 0, 183, 0.137);
+  // 031642
+}
+
+// Resuable CSS  ==============================>
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section {
+  padding: 7rem 0 2rem;
+}
+.container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: var(--whiteColor);
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.icon {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.socials,
+.languageDiv,
+.badgeDiv,
+.navLists,
+.bannerCard,
+.col,
+.giftIconDiv,
+.imgBtns,
+.moveUp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta {
+  background: var(--primaryColor);
+  width: max-content;
+  padding: 1rem 1.5rem;
+  color: var(--whiteColor);
+  font-size: 15px;
+  cursor: pointer;
+  &:hover {
+    font-weight: 500;
+    background: var(--blackColor);
+  }
+}
+
+.textHeader {
+  text-align: center;
+  padding-bottom: 2rem;
+  h1 {
+    color: var(--primaryColor);
+    padding: 10px 0;
+  }
+  .subTitle {
+    font-weight: 500;
+    color: var(--greyColor);
+  }
+}
+
+.moveUp {
+  position: fixed;
+  top: 90%;
+  right: 1rem;
+  height: 40px;
+  width: 40px;
+  border-radius: 2px;
+  background: var(--primaryColor);
+  opacity: 0.2;
+  z-index: 2000;
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: none;
+  &:hover {
+    background: var(--HoverColor);
+    opacity: 1;
+  }
+  .icon {
+    color: var(--whiteColor);
+  }
+}
+
+// Header Section SCSS =========================================================>
+
+.header {
+  width: 100%;
+  position: fixed;
+  background: var(--primaryColor);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  z-index: 100;
+
+  .logoDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      width: 100px;
+      // filter: invert(1);
+    }
+  }
+
+  .languageDiv {
+    display: none;
+    justify-content: right;
+    margin-right: 3rem;
+    .phoneNo,
+    .icon {
+      color: var(--whiteColor);
+      .icon,
+      span {
+        margin-right: 10px;
+      }
+
+      span {
+        font-size: 1rem;
+        font-weight: 500;
+        padding-right: 13px;
+        border-right: 2px solid var(--whiteColor);
+      }
+    }
+    .badgeDiv {
+      .badgeImg {
+        margin: 0 4px;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.rightColContainer {
+  flex: 1;
+  display: grid;
+  align-items: center;
+  justify-content: right;
+  text-align: right;
+}
+
+// NavBar ============>
+@media screen and (max-width: 767px) {
+  .navBar {
+    position: absolute;
+    top: 6.7rem;
+    left: -100%;
+    background: var(--primaryColor);
+    padding: 2rem 0;
+    width: 80%;
+    z-index: 1100;
+    border-top: 2px solid var(--HoverColor);
+    transition: 0.3s ease;
+
+    .closeIconDiv {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      &:hover .icon {
+        transform: rotate(30deg);
+      }
+      .icon {
+        transition: 0.3s ease;
+        color: var(--whiteColor);
+      }
+    }
+    .colorSwitch {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      &:hover .icon {
+        color: var(--HoverColor);
+      }
+      .icon {
+        font-size: 2rem;
+        transition: 0.3s ease;
+        color: var(--whiteColor);
+      }
+    }
+  }
+
+  .tagLine {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 1rem 0 0;
+    border-top: 1px dashed var(--whiteColor);
+    p {
+      line-height: 1.5rem;
+      font-size: 15px;
+      color: var(--whiteColor);
+    }
+  }
+}
+.show {
+  left: 0;
+}
+.navLists {
+  flex-direction: column;
+  text-align: center;
+  margin: 2rem 0;
+
+  .navItem {
+    width: 100%;
+    padding: 10px 0;
+    &:hover {
+      background: var(--HoverColor);
+    }
+
+    .navLink {
+      color: var(--whiteColor);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+  }
+}
+
+.toggleIconDiv {
+  .icon {
+    font-size: 2.5rem;
+    color: var(--whiteColor);
+  }
+}
+
+// HOME CSS STARTS ====================================>
+
+.home {
+  height: 100vh;
+  width: 100%;
+
+  .bannerImg {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .slideText {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    gap: 2rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 80%;
+
+    .homeTitle {
+      color: var(--whiteColor);
+      font-size: 3rem;
+      text-align: center;
+      font-weight: 600;
+      line-height: 3.5rem;
+    }
+
+    .subTitle {
+      color: var(--whiteColor);
+      width: 100%;
+      max-width: 250px;
+      text-align: center;
+      font-size: 1.2rem;
+      display: block;
+      justify-content: center;
+      line-height: 2rem;
+      margin: auto;
+    }
+
+    .bannerBtn {
+      margin: auto;
+      transition: 0.3s;
+      .aboutBtn {
+        color: var(--whiteColor);
+      }
+    }
+    .bannerBtn:hover {
+      background: rgba(255, 255, 255, 0.527);
+    }
+  }
+
+  .swiper-pagination {
+    margin-bottom: 3rem;
+  }
+
+  .bannerCard {
+    margin-top: 4rem;
+    display: none;
+    justify-content: space-between;
+    background: var(--whiteColor);
+    color: var(--greyColor);
+    width: 600px !important;
+    height: 100px !important;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 10px solid var(--borderColor);
+    .cardInfo {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 2rem 1rem;
+      flex-basis: 80%;
+    }
+    .col {
+      font-weight: 500;
+      flex-direction: column;
+      padding: 0 5px;
+      gap: 5px;
+      .date {
+        font-size:18px;
+        font-size: 700;
+      }
+    }
+    .cardBtn {
+      height: 100% !important;
+      background: var(--primaryColor);
+      cursor: pointer;
+      &:hover {
+        font-weight: 500;
+        background: var(--HoverColor);
+      }
+      .btn {
+        color: var(--whiteColor);
+        padding: 1rem 2rem;
+      }
+    }
+  }
+  .homeWrapper {
+    position: relative;
+  }
+}
+
+// About Section Scss =============================================>
+.about {
+  .aboutContainer {
+    .aboutText {
+      .textHeader {
+        text-align: left;
+      }
+
+      .paragraph {
+        padding-left: 1.5rem;
+        border-left: 2px solid var(--primaryColor);
+      }
+
+      .aboutBtn {
+        margin: 10px 1.5rem;
+      }
+    }
+    .aboutImage {
+      border: 10px solid var(--borderColor);
+      height: 100%;
+      width: auto;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+// Offer Section Scss ===========================================================>
+.offer {
+  padding: 6rem 0;
+  background: var(--sectionBg);
+  .sectionContainer {
+    .offerItem {
+      position: relative;
+      padding: 1rem;
+      border: 1px solid var(--greyColor);
+      .imgDiv {
+        height: 200px;
+        overflow: hidden;
+        &:hover img {
+          transform: scale(1.1);
+        }
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          transition: 0.3s ease;
+        }
+      }
+      .offerInfo {
+        text-align: center;
+        .heading {
+          display: block;
+          font-size: 18px;
+          font-weight: 600;
+          color: var(--blackColor);
+        }
+        .rate {
+          display: block;
+          padding: 0.8rem 0;
+          font-size: 15px;
+          font-weight: 500;
+        }
+        p {
+          color: var(--greyColor);
+          .icon {
+            font-size: 1.5rem;
+            color: var(--HoverColor);
+            margin-right: 10px;
+          }
+        }
+        .offerBtn {
+          margin: 1rem auto;
+        }
+      }
+
+      .giftIconDiv {
+        position: absolute;
+        height: 40px;
+        width: 40px;
+        background: var(--primaryColor);
+        border-radius: 50%;
+        top: -10px;
+        right: -10px;
+        &:hover {
+          background: var(--HoverColor);
+        }
+        .giftIcon {
+          color: var(--whiteColor);
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+// Accomodation, Facilities and  Gallery Section scss ===============>
+.accomodation,
+.facilities,
+.gallery {
+  .imgDiv {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    &:hover img {
+      transform: scale(1.1);
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: 0.3s ease;
+    }
+
+    .imgInfo {
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      .name {
+        color: var(--whiteColor);
+        padding-left: 1rem;
+      }
+      .imgBtns .whiteBtn {
+        a {
+          color: var(--primaryColor);
+        }
+        background: var(--whiteColor);
+      }
+    }
+  }
+}
+.desc {
+  display: block;
+  text-align: center;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.5rem;
+  padding: 1rem 1.5rem 2rem;
+}
+
+.facilities {
+  .facWrapper {
+    position: relative;
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      display: none;
+    }
+  }
+}
+
+.gallerySwiper {
+  position: relative;
+}
+
+// Location Section Scss ===========================================================>
+.location {
+
+  .locationInfo {
+    .textHeader {
+      text-align: left;
+    }
+
+    .paragraph {
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--primaryColor);
+    }
+
+    .aboutBtn {
+      margin: 10px 1.5rem;
+    }
+  }
+  
+  iframe {
+    border: 10px solid var(--borderColor);
+    height: 100%;
+    width: 100%;
+  }
+}
+
+
+
+
+// Footer Section Scss ============>
+.footerSection {
+  width: 100%;
+  background: var(--sectionBg);
+  padding: 2rem 0;
+
+  .contentContainer {
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    margin: auto;
+    gap: 2rem;
+
+    .sisterCompany {
+      display: grid;
+
+      .logoDivs {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        .logoDiv {
+          height: 80px;
+          width: 80px;
+          border: 2px solid transparent;
+          transition: 0.3s ease;
+          overflow: hidden;
+          &:hover {
+            border: 2px solid rgb(21, 167, 170);
+          }
+  
+          img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+
+      
+    }
+    .footersectionTitle {
+      color: var(--primaryColor);
+      font-weight: 600;
+      border-left: 2px solid var(--primaryColor);
+      padding: 0 15px;
+      transform: translateX(-16px);
+    }
+    .linksDiv {
+      border-left: 1px solid rgba(70, 94, 95, 0.349);
+      padding: 0 15px;
+
+      li a {
+        display: block;
+        color: var(--blackColor);
+        cursor: pointer;
+        margin: 5px 0;
+        transition: 0.3s ease;
+        &:hover {
+          transform: translateX(5px);
+          color: rgb(13, 94, 95);
+        }
+      }
+
+      ul {
+        display: grid;
+        font-size: 15px;
+        margin-top: 1rem;
+
+        span, a {
+          color: var(--blackColor);
+          margin: 5px 0;
+          cursor: pointer;
+          transition: 0.3s ease;
+          &:hover {
+            transform: translateX(5px);
+            color: rgb(13, 94, 95);
+          }
+        }
+      }
+
+      label {
+        display: inline-block;
+        font-size: 15px;
+        padding-bottom: 1rem;
+      }
+
+      form {
+        padding-top: 1rem;
+      }
+
+      input {
+        width: 100%;
+        border: 1.5px solid var(--HoverColor);
+        background: rgba(41, 138, 133, 0.226);
+        padding: 8px 5px;
+        margin-bottom: 0.5rem;
+        outline: none;
+        color: var(--primaryColor);
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        padding: 8px 5px;
+        border: none;
+        outline: none;
+        background: var(--primaryColor);
+        color: var(--whiteColor);
+        &:hover {
+          background: var(--HoverColor);
+        }
+      }
+    }
+  }
+  .copyrightDiv {
+    width: 100%;
+    margin: 3rem auto 0;
+    text-align: center;
+    color: var(--blackColor);
+    font-size: 15px;
+    border-top: 1px solid var(--blackColor);
+    padding: 2.5rem 1rem 1rem;
+    span {
+      color: var(--boxShadowColor);
+    }
+  }
+}
+
+::selection {
+  background: var(--primaryColor);
+  color: var(--whiteColor);
+}
+
+//MEDIA QUERY SCSS ======================================================================>
+@media screen and (min-width: 480px) {
+  .footerLinks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 560px) {
+  .navBar {
+    width: 40%;
+  }
+
+  .home {
+    .slideText {
+      .subTitle {
+        font-size: 1.5rem;
+        max-width: 400px;
+      }
+    }
+  }
+  .accomodation,
+  .facilities,
+  .gallery {
+    .imgDiv {
+      height: 300px;
+    }
+  }
+}
+
+@media screen and (min-width: 680px) {
+  html {
+    font-size: 100%;
+  }
+
+  .home .bannerCard {
+    display: flex;
+    width: 100%;
+  }
+
+  .facilities .swiper-slide,
+  .offerItem {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header .languageDiv {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+  }
+
+  .header {
+    padding: 2rem 2.5rem;
+  }
+
+  .home .slide .slideText {
+    margin-top: 2rem;
+  }
+
+  .toggleIconDiv,
+  .closeIconDiv,
+  .tagLine {
+    display: none;
+  }
+
+  .rightColContainer {
+    flex-basis: 80%;
+  }
+
+  .navBar {
+    width: 100%;
+  }
+  .navLists {
+    flex-direction: row;
+    text-align: center;
+    margin: 0;
+
+    .navItem {
+      position: relative;
+      padding: 10px 5px;
+
+      &:after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 0;
+        background: var(--whiteColor);
+        bottom: 0;
+        left: 0;
+        transition: 0.3s ease;
+      }
+      &:hover {
+        background: transparent;
+        &::after {
+          width: 100%;
+        }
+      }
+
+      .navLink span {
+        display: none;
+      }
+    }
+  }
+
+  .colorSwitch {
+    position: absolute;
+    top: 2.2rem;
+    right: 3rem;
+    .icon {
+      color: var(--whiteColor);
+    }
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gallery .swiper-slide {
+    padding-bottom: 3rem;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .colorSwitch {
+    right: 9rem !important;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header {
+    padding: 2rem 16rem;
+  }
+  .colorSwitch {
+    right: 17rem !important;
+  }
+
+  .navLists {
+    .navItem {
+      padding: 10px !important;
+    }
+  }
+  .container {
+    width: 65%;
+    margin: auto;
+  }
+
+  .section {
+    padding: 9rem 0 4rem;
+  }
+  .accWrapper .swiper-slide {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    .imgDiv {
+      height: 400px;
+    }
+  }
+  .contentWrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .sisterCompany {
+    .logoDiv {
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  .footerSection .contentContainer {
+    width: 70%;
+    padding: 3rem 0;
+  }
+
+  .accomodation {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .offer {
+    margin-top: 4rem;
+  }
+
+  .textHeader{
+    h1 {
+      font-size: 2rem;
+    }
+    .subTitle {
+      font-size: 1.5rem;
+
+    }
+  }
+  .home {
+    .bannerBtn {
+      padding: .8rem 1.5rem;
+      .aboutBtn {
+        font-size: 20px;
+        color: var(--whiteColor);
+      }
+    }
+  }
+}
